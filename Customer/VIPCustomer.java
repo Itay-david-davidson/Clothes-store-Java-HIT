@@ -3,13 +3,13 @@
 public class VIPCustomer extends Customer
 {
     public static final String TYPE = "VIPCustomer";
-    public VIPCustomer(String name, String ID, String phoneNumber)
+    public VIPCustomer(String name, String id, String phoneNumber)
     {
-        super(name,ID,phoneNumber);
+        super(name,id,phoneNumber);
     }
 
     @Override
-    public String getType()
+    public final String getType()
     {
         return VIPCustomer.TYPE;
     }
