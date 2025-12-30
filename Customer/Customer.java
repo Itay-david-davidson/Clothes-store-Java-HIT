@@ -1,12 +1,12 @@
 public abstract class Customer {
     protected String name;
-    protected String ID;
+    protected String id;
     protected String phoneNumber;
 
-    public Customer (String name, String ID, String phoneNumber)
+    public Customer (String name, String id, String phoneNumber)
     {
         this.name = name;
-        this.ID = ID;
+        this.id = id;
         this.phoneNumber = phoneNumber;
     }
     
@@ -17,7 +17,7 @@ public abstract class Customer {
 
     public final String getID()
     {
-        return this.ID;
+        return this.id;
     }
 
     public final String phoneNumber()

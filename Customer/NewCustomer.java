@@ -2,15 +2,17 @@
 //Add Sales JSON
 public class NewCustomer extends Customer
 {
-    public static final String TYPE = "NewCustomer";
-    public NewCustomer(String name, String ID, String phoneNumber)
+    protected static final String TYPE = "NewCustomer";
+
+    public NewCustomer(String name, String id, String phoneNumber)
     {
-        super(name,ID,phoneNumber);
+        super(name,id,phoneNumber);
     }
 
     @Override
-    public String getType()
+    public final String getType()
     {
         return NewCustomer.TYPE;
     }
+    
 }

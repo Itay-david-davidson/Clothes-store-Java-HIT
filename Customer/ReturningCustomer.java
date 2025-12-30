@@ -3,13 +3,13 @@
 public class ReturningCustomer extends Customer
 {
     public static final String TYPE = "ReturningCustomer";
-    public ReturningCustomer(String name, String ID, String phoneNumber)
+    public ReturningCustomer(String name, String id, String phoneNumber)
     {
-        super(name,ID,phoneNumber);
+        super(name,id,phoneNumber);
     }
 
     @Override
-    public String getType()
+    public final String getType()
     {
         return ReturningCustomer.TYPE;
     }
