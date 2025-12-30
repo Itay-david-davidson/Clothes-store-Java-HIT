@@ -1,3 +1,5 @@
+package employees;
+
 public class SellerEmployee extends Employee
 {
     protected static final String TYPE = "SellerEmployee";

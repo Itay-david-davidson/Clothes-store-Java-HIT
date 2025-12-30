@@ -1,3 +1,4 @@
+package customers;
 public abstract class Customer {
     protected String name;
     protected String id;
