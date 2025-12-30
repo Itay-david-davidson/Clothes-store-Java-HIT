@@ -1,0 +1,31 @@
+public abstract class Customer {
+    protected String name;
+    protected String ID;
+    protected String phoneNumber;
+
+    public Customer (String name, String ID, String phoneNumber)
+    {
+        this.name = name;
+        this.ID = ID;
+        this.phoneNumber = phoneNumber;
+    }
+    
+    public final String getName()
+    {
+        return this.name;
+    }
+
+    public final String getID()
+    {
+        return this.ID;
+    }
+
+    public final String phoneNumber()
+    {
+        return this.phoneNumber;
+    }
+
+    public abstract String getType();
+
+}
+
