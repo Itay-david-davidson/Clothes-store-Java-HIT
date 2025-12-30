@@ -1,5 +1,5 @@
-//TODO:
-//Add Sales JSON
+package customers;
+//TODO: Add Sales JSON
 public class ReturningCustomer extends Customer
 {
     public static final String TYPE = "ReturningCustomer";
