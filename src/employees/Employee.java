@@ -7,8 +7,10 @@ public abstract  class Employee {
     protected String accountNumber;
     protected String storeName;
     protected String workerID;
+    protected String username;
+    protected String password;
 
-    public Employee(String name,String id, String phoneNumber, String accountNumber, String storeName, String workerID)
+    public Employee(String name,String id, String phoneNumber, String accountNumber, String storeName, String workerID, String username, String password)
     {
         this.name = name;
         this.id = id;
@@ -16,6 +18,13 @@ public abstract  class Employee {
         this.accountNumber = accountNumber;
         this.storeName = storeName;
         this.workerID = workerID;
+        this.username = username;
+        if (validatePassword(password))
+            this.password = password;
+        else
+            //TODO: throw error
+            System.out.println("Password does not meet requirements");
+
     }
 
     public final String getName()
@@ -41,6 +50,13 @@ public abstract  class Employee {
 
     public final String getWorkerID() {
         return this.workerID;
+    }
+
+
+    //TODO: get password policy from JSON and check if true
+    protected boolean validatePassword(String password)
+    {
+        return true;
     }
 
     public abstract String getType();
