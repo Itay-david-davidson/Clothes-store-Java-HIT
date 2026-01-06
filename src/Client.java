@@ -28,11 +28,12 @@ public class Client implements Runnable {
             String message;
             while ((message = reader.readLine()) != null)
             {
-                System.out.println("Client says: " + message);
+                System.out.println("Employee says: " + message);
             }
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
 }
