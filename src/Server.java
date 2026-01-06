@@ -38,7 +38,7 @@ public class Server
     {
         if(m_activeEmployees.containsKey(i_EmployeeName))
         {
-            System.out.println("User is already logged in from another computer");
+            System.out.println("Employee is already logged in from another computer");
             return false;
         }
         m_activeEmployees.put(i_EmployeeName, i_ComputerID);
@@ -57,4 +57,5 @@ public class Server
     }
 
 }
+
 
