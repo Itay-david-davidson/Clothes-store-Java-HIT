@@ -51,11 +51,12 @@ public class Server
         if(!m_waitingQueue.isEmpty())
         {
             String NextEmployee = m_waitingQueue.poll();
-            System.out.println(i_Employee + " User: " + NextEmployee + "is waiting");
+            System.out.println(i_Employee + " Employee: " + NextEmployee + "is waiting");
         }
         else m_availableEmpolyees.add(i_Employee);
     }
 
 }
+
 
 
