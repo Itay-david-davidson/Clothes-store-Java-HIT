@@ -9,7 +9,7 @@ public class Server
 {
     private static final int PORT = 1111;
 
-    private HashMap<String, String> m_activeEmplyees = new HashMap<>();
+    private HashMap<String, String> m_activeEmployees = new HashMap<>();
 
     private Queue<String> m_waitingQueue = new LinkedList<>();
 
@@ -18,7 +18,7 @@ public class Server
 
     public void StartServer()
     {
-        try(ServerSocket serxverSocket = new ServerSocket(PORT))
+        try(ServerSocket serverSocket = new ServerSocket(PORT))
         {
             System.out.println("Chat has started on port: " + PORT);
             while (true)
@@ -57,6 +57,7 @@ public class Server
     }
 
 }
+
 
 
 
