@@ -1,63 +1,40 @@
 package Chat;
 
+import employees.Employee;
+import org.w3c.dom.ls.LSOutput;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.*;
 
-public class Server
-{
-    private static final int PORT = 1111;
+public class Server {
+    private static final int PORT = 5001;
+    private List<ClientHandler> m_NumberOfEmployeesInChat = new ArrayList<>();
 
-    private HashMap<String, String> m_activeEmployees = new HashMap<>();
-
-    private Queue<String> m_waitingQueue = new LinkedList<>();
-
-    private List<String> m_availableEmpolyees = new ArrayList<>();
-
-
-    public void StartServer()
-    {
-        try(ServerSocket serverSocket = new ServerSocket(PORT))
-        {
+    public void StartServer() {
+        try (ServerSocket serverSocket = new ServerSocket(PORT)) {
             System.out.println("Chat has started on port: " + PORT);
-            while (true)
+            while(m_NumberOfEmployeesInChat.size() < 2)
             {
                 Socket clientSocket = serverSocket.accept();
-                Client client = new Client(clientSocket, this);
+                System.out.println("Employee Joined"); 
+
+                ClientHandler client = new ClientHandler(clientSocket, this);
+                m_NumberOfEmployeesInChat.add(client);
                 new Thread(client).start();
             }
-
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
-
-    public boolean IsEmployeeAlreadyInTheServer(String i_EmployeeName, String i_ComputerID)
-    {
-        if(m_activeEmployees.containsKey(i_EmployeeName))
+    public synchronized void broadcast(String i_Message, ClientHandler i_Sender) {
+        for(ClientHandler receiver : m_NumberOfEmployeesInChat)
         {
-            System.out.println("Employee is already logged in from another computer");
-            return false;
+            if(receiver != i_Sender)
+            {
+                receiver.SendMessage(i_Message);
+            }
         }
-        m_activeEmployees.put(i_EmployeeName, i_ComputerID);
-        return true;
     }
-
-
-    public void notifyEmployeeAvailable(String i_Employee)
-    {
-        if(!m_waitingQueue.isEmpty())
-        {
-            String NextEmployee = m_waitingQueue.poll();
-            System.out.println(i_Employee + " Employee: " + NextEmployee + "is waiting");
-        }
-        else m_availableEmpolyees.add(i_Employee);
-    }
-
 }
-
-
-
-
