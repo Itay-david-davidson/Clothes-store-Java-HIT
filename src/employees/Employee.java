@@ -5,18 +5,18 @@ public abstract  class Employee {
     protected String id;
     protected String phoneNumber;
     protected String accountNumber;
-    protected String storeName;
+    protected String storeID;
     protected String workerID;
     protected String username;
     protected String password;
 
-    public Employee(String name,String id, String phoneNumber, String accountNumber, String storeName, String workerID, String username, String password)
+    public Employee(String name,String id, String phoneNumber, String accountNumber, String storeID, String workerID, String username, String password)
     {
         this.name = name;
         this.id = id;
         this.phoneNumber = phoneNumber;
         this.accountNumber = accountNumber;
-        this.storeName = storeName;
+        this.storeID = storeID;
         this.workerID = workerID;
         this.username = username;
         if (validatePassword(password))
@@ -44,8 +44,8 @@ public abstract  class Employee {
         return this.accountNumber;
     }
 
-    public final String getStoreName() {
-        return this.storeName;
+    public final String getStoreID() {
+        return this.storeID;
     }
 
     public final String getWorkerID() {
