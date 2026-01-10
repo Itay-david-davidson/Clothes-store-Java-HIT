@@ -3,6 +3,8 @@ import java.util.Scanner;
 public class Main
 {
     public static void main(String[] args) {
+        String address = "localhost";
+        int port = 5001;
         Scanner s = new Scanner(System.in);
         Employee currEmployee = null;
         while (currEmployee == null)
@@ -28,6 +30,9 @@ public class Main
             chosenSymbol = s.next().charAt(0);
             switch (chosenSymbol)
             {
+                case '6' ->
+                    {
+                }
                 //TODO: enter rest of screens
                 default -> System.out.println("Character unrecognized. Please try again:");
             }
