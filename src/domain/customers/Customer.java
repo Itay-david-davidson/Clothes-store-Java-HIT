@@ -1,6 +1,6 @@
 package domain.customers;
 
-// מחלקת הבסיס - כל סוגי הלקוחות ירשו ממנה
+// מחלקת הבסיס  כל סוגי הלקוחות ירשו ממנה
 public abstract class Customer {
 
     protected String id;
