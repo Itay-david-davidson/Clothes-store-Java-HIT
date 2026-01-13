@@ -1,79 +1,46 @@
 [
   {
-    "id": "1",
-    "name": "יוסי כהן",
-    "phone": "0501234567",
-    "role": "Cashier",
-    "extra": "BR1"
-  },
-  {
-    "id": "1",
-    "name": "יוסי כהן",
-    "phone": "0501111111",
-    "role": "Cashier",
-    "extra": "BR1"
-  },
-  {
-    "id": "2",
-    "name": "דני לוי",
-    "phone": "0502222222",
-    "role": "Seller",
-    "extra": "Electronics"
-  },
-  {
-    "id": "3",
-    "name": "משה ישראלי",
-    "phone": "0503333333",
-    "role": "ShiftManager",
-    "extra": "Morning"
-  },
-  {
-    "id": "1",
-    "name": "יוסי כהן",
-    "phone": "0501111111",
-    "role": "Cashier",
-    "extra": "BR1"
-  },
-  {
-    "id": "2",
-    "name": "דני לוי",
-    "phone": "0502222222",
-    "role": "Seller",
-    "extra": "Electronics"
-  },
-  {
-    "id": "3",
-    "name": "משה ישראלי",
-    "phone": "0503333333",
-    "role": "ShiftManager",
-    "extra": "Morning"
-  },
-  {
     "id": "E101",
-    "name": "יוסי כהן",
-    "phone": "0501111111",
-    "role": "Cashier",
-    "extra": "Branch A"
+    "name": "Yosi Cohen",
+    "phoneNumber": "0501111111",
+    "accountNumber": "05451767",
+    "storeID" : "1",
+    "workerID": "1",
+    "username": "YosiCCC123",
+    "password": "abcdeZfgh1@",
+    "type": "SellerEmployee"
   },
   {
     "id": "E102",
-    "name": "דני לוי",
-    "phone": "0502222222",
-    "role": "Seller",
-    "extra": "Fashion"
+    "name": "Rani Levi",
+    "phoneNumber": "0502222222",
+    "accountNumber": "47761646",
+    "storeID": "2",
+    "workerID": "2",
+    "username": "RLEV4444",
+    "password": "abcCde%$123",
+    "type": "RegisterEmployee"
   },
   {
     "id": "E103",
-    "name": "משה ישראלי",
-    "phone": "0503333333",
-    "role": "ShiftManager",
-    "extra": "Morning Shift"
+    "name": "Moshe Israeli",
+    "phoneNumber": "0503333333",
+    "accountNumber": "65468793",
+    "storeID": "1",
+    "workerID": "3",
+    "username": "IsrMoshe321",
+    "password": "aSbcde%$12367",
+    "type": "ManagerEmployee"
   },
   {
     "id": "E001",
-    "name": "יוסי כהן",
-    "phone": "050-1111111",
-    "role": "Cashier",
-    "extra": "סניף חולון"
+    "name": "Yosi Cohen",
+    "phoneNumber": "05011112311",
+    "accountNumber": "6346873",
+    "storeID" : "2",
+    "workerID": "4",
+    "username": "ChoenPriest123",
+    "password": "a9879!@#sadD",
+    "type": "SellerEmployee"
   }
 ]
