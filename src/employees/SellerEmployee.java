@@ -1,18 +1,14 @@
 package employees;
 
+//lowest level of employee
 public class SellerEmployee extends Employee
 {
-    protected static final String TYPE = "SellerEmployee";
+    protected final String TYPE = "SellerEmployee";
 
-    public SellerEmployee(String name, String id, String phoneNumber, String accountNumber, String storeName, String workerID,String username, String password)
+    public SellerEmployee(String name, String id, String phoneNumber, String accountNumber, String storeID, String workerID,String username, String password)
     {
-        super(name,id,phoneNumber,accountNumber,storeName,workerID,username,password);
+        super(name,id,phoneNumber,accountNumber,storeID,workerID,username,password);
     }
 
-    @Override
-    public final String getType()
-    {
-        return  SellerEmployee.TYPE;
-    }
-    
+
 }
