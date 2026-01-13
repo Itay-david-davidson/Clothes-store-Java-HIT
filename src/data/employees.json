@@ -1,0 +1,79 @@
+[
+  {
+    "id": "1",
+    "name": "יוסי כהן",
+    "phone": "0501234567",
+    "role": "Cashier",
+    "extra": "BR1"
+  },
+  {
+    "id": "1",
+    "name": "יוסי כהן",
+    "phone": "0501111111",
+    "role": "Cashier",
+    "extra": "BR1"
+  },
+  {
+    "id": "2",
+    "name": "דני לוי",
+    "phone": "0502222222",
+    "role": "Seller",
+    "extra": "Electronics"
+  },
+  {
+    "id": "3",
+    "name": "משה ישראלי",
+    "phone": "0503333333",
+    "role": "ShiftManager",
+    "extra": "Morning"
+  },
+  {
+    "id": "1",
+    "name": "יוסי כהן",
+    "phone": "0501111111",
+    "role": "Cashier",
+    "extra": "BR1"
+  },
+  {
+    "id": "2",
+    "name": "דני לוי",
+    "phone": "0502222222",
+    "role": "Seller",
+    "extra": "Electronics"
+  },
+  {
+    "id": "3",
+    "name": "משה ישראלי",
+    "phone": "0503333333",
+    "role": "ShiftManager",
+    "extra": "Morning"
+  },
+  {
+    "id": "E101",
+    "name": "יוסי כהן",
+    "phone": "0501111111",
+    "role": "Cashier",
+    "extra": "Branch A"
+  },
+  {
+    "id": "E102",
+    "name": "דני לוי",
+    "phone": "0502222222",
+    "role": "Seller",
+    "extra": "Fashion"
+  },
+  {
+    "id": "E103",
+    "name": "משה ישראלי",
+    "phone": "0503333333",
+    "role": "ShiftManager",
+    "extra": "Morning Shift"
+  },
+  {
+    "id": "E001",
+    "name": "יוסי כהן",
+    "phone": "050-1111111",
+    "role": "Cashier",
+    "extra": "סניף חולון"
+  }
+]
