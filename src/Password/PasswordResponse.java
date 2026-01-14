@@ -17,26 +17,28 @@ import java.util.Map;
 
 public class PasswordResponse {
 
-    public Map<String,PasswordData> password_policy;
-    private static final String FILE_PATH = "data/password_policy.json";
+    public PasswordData password_policy;
+    private static final String FILE_PATH = "src/data/password_policy.json";
     private static final Gson gson = new Gson();
 
     public static PasswordData getPasswordPolicy()
     {
+        PasswordData d = new PasswordData(5,true,true,true,true);
+        String json = gson.toJson(d);
         File file = new File(FILE_PATH);
         if (!file.exists()) {
             System.out.println("Error opening password policy file");
             return null;
         }
         try (FileReader reader = new FileReader(file)) {
-            PasswordResponse response = gson.fromJson(reader,PasswordResponse.class);
+            PasswordData response = gson.fromJson(reader,PasswordData.class);
             if (response == null)
             {
                 //TODO: throw error
                 System.out.println("Password policy might be empty");
                 return null;
             }
-            return response.password_policy.get("password_policy");
+            return response;
 
         } catch (IOException e) {
             e.printStackTrace();
