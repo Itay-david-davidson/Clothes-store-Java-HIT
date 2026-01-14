@@ -1,9 +1,17 @@
 package customers;
+
+
+/**
+ * Basic customer archetype for subclasses.
+ * Is abstract.
+ * Receives name, id and phone number. type is decided by which subclass it is
+ */
 public abstract class Customer {
     protected String name;
     protected String id;
     protected String phoneNumber;
     protected final String TYPE = "";
+
 
     public Customer (String name, String id, String phoneNumber)
     {
@@ -32,7 +40,10 @@ public abstract class Customer {
         return this.TYPE;
     }
 
-    // המרה לאובייקט נתונים פשוט עבור ה-JSON
+
+    /**
+     * @return CustomerData type, to use in conversion to JSON
+     */
     public CustomerData toData() {
         CustomerData data = new CustomerData();
         data.id = this.getID();
@@ -42,7 +53,10 @@ public abstract class Customer {
         return data;
     }
 
-        // הפונקציה החכמה שלך: יוצרת אובייקט לוגי מתוך נתוני הקובץ
+    /**
+     * @param data CustomerData to convert from JSON to customer
+     * @return Subclass of customer depends on type field in data
+     */
         public static Customer fromData(CustomerData data) {
             return switch (data.type) {
                 case "VIP" -> new VIPCustomer(data.id, data.name, data.phone);
@@ -57,7 +71,11 @@ public abstract class Customer {
         return getType() + " [ID=" + this.getID() + ", Name=" + this.getName();
     }
 
-    // הדרכים השונות לזהות את הלקוח
+
+    /**
+     * @param id id of another customer
+     * @return comparison results of both customers id
+     */
     public boolean compare(String id) {
         return this.id.equals(id);
     }

@@ -5,46 +5,43 @@ import repository.CustomerRepository;
 import java.util.List;
 
 public class CustomerService {
-    private final CustomerRepository repository;
-
-    public CustomerService(CustomerRepository repository) {
-        this.repository = repository;
-    }
 
 
-    public List<Customer> getAllCustomers() {
-        List<Customer> data = repository.load();
+
+
+    public static List<Customer> getAllCustomers() {
+        List<Customer> data = CustomerRepository.load();
         System.out.println("Info: Successfully loaded all customers.");
         return data;
     }
 
-    public boolean addCustomer(Customer customer) {
+    public static boolean addCustomer(Customer customer) {
         if (customer == null) {
             System.out.println("Error: Cannot add \"null\" customer!");
             return false;
         }
-        List<Customer> data = repository.load();
+        List<Customer> data = CustomerRepository.load();
         data.add(customer);
-        repository.save(data);
+        CustomerRepository.save(data);
         System.out.println("Info: Successfully added " + customer + ".");
         return true;
     }
 
-    public Customer findCustomer(String value) {
-        List<Customer> data = repository.load();
+    public static Customer findCustomer(String value) {
+        List<Customer> data = CustomerRepository.load();
         return findCustomer(data, value);
     }
 
-    public Customer findCustomer(Customer customer) {
+    public static Customer findCustomer(Customer customer) {
         if (customer == null) {
             System.out.println("Error: Cannot search for \"null\" value!");
             return null;
         }
-        List<Customer> data = repository.load();
+        List<Customer> data = CustomerRepository.load();
         return findCustomer(data, customer.getID());
     }
 
-    private Customer findCustomer(List<Customer> data, String id) {
+    private static Customer findCustomer(List<Customer> data, String id) {
         System.out.println("Info: Searching for " + id + " from " + data.size() + " customers.");
         for (Customer c : data) {
             if (c.compare(id)) {
@@ -56,38 +53,38 @@ public class CustomerService {
         return null;
     }
 
-    public boolean removeCustomer(String id) {
+    public static boolean removeCustomer(String id) {
         Customer c = findCustomer(id);
         if (c == null) {
             System.out.println("Error: Cannot find customer with id of " + id + "!");
             return false;
         }
-        List<Customer> data = repository.load();
+        List<Customer> data = CustomerRepository.load();
         data.remove(c);
-        repository.save(data);
+        CustomerRepository.save(data);
         System.out.println("Info: Successfully removed " + c + ".");
         return true;
     }
 
-    public boolean removeCustomer(Customer customer) {
+    public static boolean removeCustomer(Customer customer) {
         if (customer == null) {
             System.out.println("Error: Cannot remove \"null\" value!");
             return false;
         }
-        List<Customer> data = repository.load();
+        List<Customer> data = CustomerRepository.load();
         Customer c = findCustomer(data, customer.getID());
         if (c == null) {
             System.out.println("Error: Customer " + customer + " does not exist!");
             return false;
         }
         data.remove(c);
-        repository.save(data);
+        CustomerRepository.save(data);
         System.out.println("Info: Successfully removed " + c + ".");
         return true;
     }
 
-    public List<Customer> getCustomers() {
-        List<Customer> data = repository.load();
+    public static List<Customer> getCustomers() {
+        List<Customer> data = CustomerRepository.load();
         System.out.println("Info: Successfully loaded all customers from DB.");
         return data;
     }

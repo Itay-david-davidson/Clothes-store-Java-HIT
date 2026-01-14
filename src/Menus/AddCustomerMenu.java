@@ -1,5 +1,8 @@
 package Menus;
 
+/**
+ * menu to choose which customer type to add
+ */
 public class AddCustomerMenu extends Menu {
     private static AddCustomerMenu AddCustomerMenuInstance;
 

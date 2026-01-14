@@ -1,6 +1,8 @@
 package employees;
 
-//lowest level of employee
+/**
+ * lowest level of employee. Can't join existing chats or manage employees.
+ */
 public class SellerEmployee extends Employee
 {
     protected final String TYPE = "SellerEmployee";

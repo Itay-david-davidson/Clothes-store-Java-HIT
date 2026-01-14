@@ -1,6 +1,8 @@
 package customers;
-//TODO: Add Sales JSON
 
+/**
+ * Subclass of customer, has the best sales
+ */
 public class VIPCustomer extends Customer
 {
     public final String TYPE = "VIPCustomer";

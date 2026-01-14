@@ -1,6 +1,9 @@
 package employees;
 
-//highest level of employee. can join chats and manage users
+
+/**
+ * Highest level of employee. Can join chat and manage users
+ */
 public class RegisterEmployee extends Employee
 {
     protected final String TYPE = "RegisterEmployee";

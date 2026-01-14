@@ -4,6 +4,7 @@ import Menus.MenuInit;
 public class Main
 {
     public static void main(String[] args) {
+        //TODO: connect with server
         String address = "localhost";
         int port = 5001;
         Scanner s = new Scanner(System.in);
@@ -13,7 +14,7 @@ public class Main
             System.out.println("Please enter username and password to login");
             String username = s.next();
             String password = s.next();
-            currEmployee = login(username,password);
+            //TODO: send to server to check login
 
         }
         MenuInit.mainMenu.show();
@@ -23,10 +24,5 @@ public class Main
         s.close();
     }
 
-    //TODO: add connection to JSON to check for employee and return them
-    public static Employee login(String username,String password)
-    {
-        return null;
-    }
 
 }

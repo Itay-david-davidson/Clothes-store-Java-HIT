@@ -6,45 +6,42 @@ import repository.EmployeeRepository;
 import java.util.List;
 
 public class EmployeeService {
-    private final EmployeeRepository repository;
 
-    public EmployeeService(EmployeeRepository repository) {
-        this.repository = repository;
-    }
 
-    public List<Employee> getAllEmployees() {
-        List<Employee> data = repository.load();
+
+    public static List<Employee> getAllEmployees() {
+        List<Employee> data = EmployeeRepository.load();
         System.out.println("Info: Successfully loaded all customers.");
         return data;
     }
 
-    public boolean addEmployee(Employee employee) {
+    public static boolean addEmployee(Employee employee) {
         if (employee == null) {
             System.out.println("Error: Cannot add \"null\" employee!");
             return false;
         }
-        List<Employee> data = repository.load();
+        List<Employee> data = EmployeeRepository.load();
         data.add(employee);
-        repository.save(data);
+        EmployeeRepository.save(data);
         System.out.println("Info: Successfully added " + employee + ".");
         return true;
     }
 
-    public Employee findEmployee(String value) {
-        List<Employee> data = repository.load();
+    public static Employee findEmployee(String value) {
+        List<Employee> data = EmployeeRepository.load();
         return findEmployee(data, value);
     }
 
-    public Employee findEmployee(Employee employee) {
+    public static Employee findEmployee(Employee employee) {
         if (employee == null) {
             System.out.println("Error: Cannot search for \"null\" value!");
             return null;
         }
-        List<Employee> data = repository.load();
+        List<Employee> data = EmployeeRepository.load();
         return findEmployee(data, employee.getID());
     }
 
-    private Employee findEmployee(List<Employee> data, String id) {
+    private static Employee findEmployee(List<Employee> data, String id) {
         System.out.println("Info: Searching for " + id + " from " + data.size() + " employees.");
         for (Employee e : data) {
             if (e.compare(id)) {
@@ -56,39 +53,51 @@ public class EmployeeService {
         return null;
     }
 
-    public boolean removeEmployee(String id) {
+    public static boolean removeEmployee(String id) {
         Employee e = findEmployee(id);
         if (e == null) {
             System.out.println("Error: Cannot find employee with id of " + id + "!");
             return false;
         }
-        List<Employee> data = repository.load();
+        List<Employee> data = EmployeeRepository.load();
         data.remove(e);
-        repository.save(data);
+        EmployeeRepository.save(data);
         System.out.println("Info: Successfully removed " + e + ".");
         return true;
     }
 
-    public boolean removeEmployee(Employee employee) {
+    public static boolean removeEmployee(Employee employee) {
         if (employee == null) {
             System.out.println("Error: Cannot remove \"null\" value!");
             return false;
         }
-        List<Employee> data = repository.load();
+        List<Employee> data = EmployeeRepository.load();
         Employee e = findEmployee(data, employee.getID());
         if (e == null) {
             System.out.println("Error: Employee " + employee + " does not exist!");
             return false;
         }
         data.remove(e);
-        repository.save(data);
+        EmployeeRepository.save(data);
         System.out.println("Info: Successfully removed " + e + ".");
         return true;
     }
 
-    public List<Employee> getEmployees() {
-        List<Employee> data = repository.load();
+    public static List<Employee> getEmployees() {
+        List<Employee> data = EmployeeRepository.load();
         System.out.println("Info: Successfully loaded all employees from DB.");
         return data;
+    }
+
+    public static Employee Login(String username, String password)
+    {
+        List<Employee> data = EmployeeRepository.load();
+        for (Employee e : data)
+        {
+            if (e.CheckLogin(username,password))
+                return e;
+        }
+        return null;
+
     }
 }

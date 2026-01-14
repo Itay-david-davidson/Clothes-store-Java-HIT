@@ -2,6 +2,9 @@ package employees;
 
 import java.io.Serializable;
 
+/**
+ * To be used as an interface between employee object and JSON representation
+ */
 public class EmployeeData implements Serializable {
     private static final long serialVersionUID = 1L;
     public String id;

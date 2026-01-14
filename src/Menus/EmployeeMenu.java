@@ -1,5 +1,8 @@
 package Menus;
 
+/**
+ * Employee menu, to choose which employee to add view or delete
+ */
 public class EmployeeMenu extends Menu{
     private static EmployeeMenu employeeMenuInstance;
 

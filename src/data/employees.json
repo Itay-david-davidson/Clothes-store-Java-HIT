@@ -42,5 +42,16 @@
     "username": "ChoenPriest123",
     "password": "a9879!@#sadD",
     "type": "SellerEmployee"
+  },
+  {
+    "id": "E000",
+    "name": "Me",
+    "phoneNumber": "0501145611",
+    "accountNumber": "2",
+    "storeID" : "1",
+    "workerID": "5",
+    "username": "host",
+    "password": "admin123!",
+    "type": "RegisterEmployee"
   }
 ]

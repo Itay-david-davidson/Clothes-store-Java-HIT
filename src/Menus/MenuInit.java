@@ -1,5 +1,8 @@
 package Menus;
 
+/**
+ * menu initializer, to get every menu easily
+ */
 public class MenuInit {
 
     public static final MainMenu mainMenu = MainMenu.getInstance();

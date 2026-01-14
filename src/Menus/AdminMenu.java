@@ -1,5 +1,9 @@
 package Menus;
 
+//TODO: difference between this and employee menu?
+/**
+ * Admin menu, to choose which employee to add, view or delete
+ */
 public class AdminMenu extends Menu{
     private static AdminMenu adminMenuInstance;
 

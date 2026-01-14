@@ -1,5 +1,8 @@
 package customers;
-//TODO: Add Sales JSON
+
+/**
+ * Subclass of Customer, has ok sales
+ */
 public class ReturningCustomer extends Customer {
     public final String TYPE = "ReturningCustomer";
 
