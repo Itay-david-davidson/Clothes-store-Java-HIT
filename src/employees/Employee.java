@@ -1,5 +1,8 @@
 package employees;
 
+import Password.PasswordData;
+import Password.PasswordResponse;
+
 /**
  * Basic employee archetype for subclasses.
  * Is abstract.
@@ -86,6 +89,17 @@ public abstract  class Employee {
     //TODO: get password policy from JSON and check if true
     protected boolean validatePassword(String password)
     {
+        PasswordData policy =PasswordResponse.getPasswordPolicy();
+        if (password.length() < policy.minLength)
+            return false;
+        if (policy.requireDigit && !password.matches(".*\\d.*"))
+            return false;
+        if (policy.requireLowercase && !password.matches(".*[a-z]*"))
+            return false;
+        if (policy.requireUppercase && !password.matches(".*[A-Z]*"))
+            return false;
+        if (policy.requireSpecial && password.matches("[a-zA-Z]+"))
+            return false;
         return true;
     }
 
