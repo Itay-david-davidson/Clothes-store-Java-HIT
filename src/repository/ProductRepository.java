@@ -18,9 +18,9 @@ public class ProductRepository {
 
     private static final String FILE_PATH = "data/product.json";
 
-    private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-    public List<Product> load() {
+    public static List<Product> load() {
         File file = new File(FILE_PATH);
         if (!file.exists()) {
             System.out.println("Info: Product file does not exist! Creating new DB.");
@@ -41,7 +41,7 @@ public class ProductRepository {
         }
     }
 
-    public void save(List<Product> data) {
+    public static void save(List<Product> data) {
         if (data == null || data.isEmpty()) {
             System.out.println("Error: Invalid length of data to save!");
             return;

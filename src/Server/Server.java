@@ -7,7 +7,7 @@ import java.util.*;
 import Client.*;
 
 public class Server {
-    private static final int PORT = 5001;
+    private static final int PORT = 8888;
     private List<ClientHandler> m_NumberOfEmployeesInChat = new ArrayList<>();
 
     public void StartServer() {

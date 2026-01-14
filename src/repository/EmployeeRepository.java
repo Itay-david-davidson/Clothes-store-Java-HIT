@@ -19,9 +19,9 @@ public class EmployeeRepository {
 
     private static final String FILE_PATH = "data/employees.json";
 
-    private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-    public List<Employee> load() {
+    public static List<Employee> load() {
         File file = new File(FILE_PATH);
         if (!file.exists()) {
             System.out.println("Info: DB file does not exist! Creating new DB.");
@@ -42,7 +42,7 @@ public class EmployeeRepository {
         }
     }
 
-    public void save(List<Employee> data) {
+    public static void save(List<Employee> data) {
         if (data == null || data.isEmpty()) {
             System.out.println("Error: Invalid length of data to save!");
             return;

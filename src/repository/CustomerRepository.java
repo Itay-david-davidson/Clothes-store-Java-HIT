@@ -15,9 +15,9 @@ import java.util.List;
 public class CustomerRepository {
     private static final String FILE_PATH = "data/customers.json";
 
-    private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-    public List<Customer> load() {
+    public static List<Customer> load() {
         File file = new File(FILE_PATH);
         if (!file.exists()) {
             System.out.println("Info: Customer file does not exist! Creating new DB.");
@@ -38,7 +38,7 @@ public class CustomerRepository {
         }
     }
 
-    public void save(List<Customer> data) {
+    public static void save(List<Customer> data) {
         if (data == null || data.isEmpty()) {
             System.out.println("Error: Invalid length of data to save!");
             return;

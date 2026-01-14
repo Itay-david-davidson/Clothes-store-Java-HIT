@@ -1,6 +1,10 @@
 
 package inventory;
 
+
+/**
+ * Class of products in the store. parameters define the product
+ */
 public class Product {
 
     private final String id;

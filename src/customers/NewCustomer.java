@@ -1,6 +1,9 @@
 package customers;
 
-//TODO: Add Sales JSON
+
+/**
+ * NewCustomer subclass of Customer, has the worst sales
+ */
 public class NewCustomer extends Customer
 {
     protected final String TYPE = "NewCustomer";

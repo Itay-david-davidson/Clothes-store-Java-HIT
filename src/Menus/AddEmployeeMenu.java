@@ -1,5 +1,8 @@
 package Menus;
 
+/**
+ * menu to choose which employee type to add
+ */
 public class AddEmployeeMenu extends Menu{
     private static AddEmployeeMenu AddEmployeeMenuInstance;
 

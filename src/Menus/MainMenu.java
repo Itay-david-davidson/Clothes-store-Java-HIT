@@ -1,6 +1,9 @@
 package Menus;
 
 
+/**
+ * main menu. in order to get to all other menus and actions
+ */
 public class MainMenu extends Menu {
 
     private static MainMenu mainMenuInstance;
