@@ -98,7 +98,7 @@ public abstract  class Employee {
             return false;
         if (policy.requireUppercase && !password.matches(".*[A-Z]*"))
             return false;
-        if (policy.requireSpecial && password.matches("[a-zA-Z]+"))
+        if (policy.requireSpecial && !password.matches("[$&+,:;=\\\\\\\\?@#|/'<>.^*()%!-]"))
             return false;
         return true;
     }
