@@ -16,6 +16,7 @@ public class RequestHandler {
     private static final Gson gson = new Gson();
     private static Employee employee;
     private static Customer customer;
+    private static ChatActions chat;
     public static String Handle(JsonObject request) // return String but has inside objects
     {
         Employee employee;
@@ -41,7 +42,7 @@ public class RequestHandler {
                 String username = data.get("username").getAsString();
                 String branchId = data.get("StoreId").getAsString();
 
-                response = Chat.startChat(userIdRequesting, branchId); // Connect the chat here.
+                chat = Chat.startChat(userIdRequesting, branchId); // Connect the chat here.
                 break;
             }
             case "addManagerEmployee":
