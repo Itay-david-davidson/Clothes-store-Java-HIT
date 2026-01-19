@@ -17,7 +17,7 @@ import java.util.List;
 
 public class EmployeeRepository {
 
-    private static final String FILE_PATH = "data/employees.json";
+    private static final String FILE_PATH = "src/data/employees.json";
 
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -28,9 +28,11 @@ public class EmployeeRepository {
             return new ArrayList<>();
         }
         try (FileReader reader = new FileReader(file)) {
-            Type type = new TypeToken<List<EmployeeData>>(){}.getType();
+            Type type = new TypeToken<List<EmployeeData>>() {
+            }.getType();
             List<EmployeeData> list = gson.fromJson(reader, type);
-            if (list == null) return new ArrayList<>();
+            if (list == null)
+                return new ArrayList<>();
             List<Employee> employees = new ArrayList<>(list.size());
             for (EmployeeData d : list) {
                 employees.add(Employee.fromData(d));
