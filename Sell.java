@@ -17,6 +17,19 @@ public class Sell {
     private Discount d;
     private Customer customer;
 
+    //Empty constructor to create a guest
+    public Sell(){
+        Scanner s = new Scanner(System.in);
+        this.cart = new LinkedList<>();
+        this.customerName = "guest";
+        System.out.print("Enter your phone number: ");
+        this.phone = s.nextLine();
+        System.out.println();
+        System.out.print("Enter your email: ");
+        this.email = s.nextLine();
+        System.out.println();
+    }
+
     //The constructor is getting a customer and calculating the discount amount via the customer type
     public Sell(Customer customer){
         this.cart = new LinkedList<>();
@@ -128,3 +141,4 @@ public class Sell {
         System.out.println("Thanks you for shopping!");
     }
 }
+
