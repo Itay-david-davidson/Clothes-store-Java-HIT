@@ -3,36 +3,60 @@ package Server;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.*;
-import Client.*;
+import java.util.ArrayList;
 
 public class Server {
-    private static final int PORT = 8888;
-    private List<ClientHandler> m_NumberOfEmployeesInChat = new ArrayList<>();
+    public static final int PORT = 5001;
 
-    public void StartServer() {
+    // רשימת הלקוחות
+    private ArrayList<ClientHandler> allClients = new ArrayList<>();
+
+    public static void main(String[] args) {
+        new Server().runServer();
+    }
+
+    public void runServer() {
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
-            System.out.println("Chat has started on port: " + PORT);
-            while(m_NumberOfEmployeesInChat.size() < 2)
-            {
-                Socket clientSocket = serverSocket.accept();
-                System.out.println("Employee Joined"); 
+            System.out.println("Server started on port " + PORT);
 
-                ClientHandler client = new ClientHandler(clientSocket, this);
-                m_NumberOfEmployeesInChat.add(client);
-                new Thread(client).start();
+            while (true) {
+                Socket socket = serverSocket.accept();
+                ClientHandler newClient = new ClientHandler(socket, this);
+                addClient(newClient);
+                newClient.start();
             }
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
-    public synchronized void broadcast(String i_Message, ClientHandler i_Sender) {
-        for(ClientHandler receiver : m_NumberOfEmployeesInChat)
-        {
-            if(receiver != i_Sender)
-            {
-                receiver.SendMessage(i_Message);
+
+    public synchronized void addClient(ClientHandler client) {
+        allClients.add(client);
+    }
+
+    public synchronized void removeClient(ClientHandler client) {
+        allClients.remove(client);
+        System.out.println("Client removed.");
+    }
+
+    // מוצא לקוח לפי ID (כדי לחבר שיחות)
+    public synchronized ClientHandler findClientById(String id) {
+        for (ClientHandler client : allClients) {
+            if (client.getEmployee() != null && client.getEmployee().getID().equals(id)) {
+                return client;
             }
         }
+        return null;
+    }
+
+    // עוזר למנהל למצוא את השותף לשיחה
+    public synchronized ClientHandler getChatPartner(String employeeId) {
+        ClientHandler user = findClientById(employeeId);
+        // אם העובד קיים ועסוק, בודקים עם מי הוא מדבר (שמור ב-CurrentChatId)
+        if (user != null && user.getEmployee().isBusy()) {
+            String partnerID = user.getEmployee().getCurrentChatId();
+            return findClientById(partnerID);
+        }
+        return null;
     }
 }
