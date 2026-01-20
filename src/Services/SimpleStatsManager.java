@@ -38,7 +38,7 @@ public class SimpleStatsManager {
     }
 
     // פונקציית עזר\מתודת עזר: קוראת את הקובץ והופכת אותו חזרה לטבלה או מילון (Map)
-    private static Map<String, Double> loadStats() {
+    public static Map<String, Double> loadStats() {
         // פייל הוא אובייקט שמייצג נתיב לקובץ , לא את הקובץ עצמו
         File file = new File(FILE_PATH);
         // אם הקובץ לא קיים, נחזיר טבלה חדשה וריקה חוסך אקספשיין מיותר אם לא קיים קובץ

@@ -24,6 +24,7 @@ public class CustomerService {
         data.add(customer);
         CustomerRepository.save(data);
         System.out.println("Info: Successfully added " + customer + ".");
+        //todo :
         return true;
     }
 
