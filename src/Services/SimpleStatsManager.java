@@ -7,15 +7,15 @@ import java.util.HashMap; // מבנה נתונים של מפתח (שם מוצר)
 import java.util.Map; // הממשק הכללי למפות (Maps)
 
 public class SimpleStatsManager {
-    // 1. הנתיב לקובץ שבו נשמור את הסטטיסטיקות
+    // הנתיב לקובץ שבו נשמור את הסטטיסטיקות
     private static final String FILE_PATH = "src/data/statistics.json";
 
-    // 2. יצירת אובייקט GSON שכותב בצורה יפה ומסודרת
+    // יצירת אובייקט GSON שכותב בצורה יפה ומסודרת
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     // הפונקציה המרכזית: מקבלת שם מוצר ומעדכנת את המונה שלו
     public static void updateProductSale(String productName) {
-        // א. טעינת הנתונים הקיימים מהקובץ גייסון על ידי פונקציה loadstats לתוך משתנה "מפה" (טבלה של שם וכמות)
+        // טעינת הנתונים הקיימים מהקובץ גייסון על ידי פונקציה loadstat לתוך משתנה "מפה" (טבלה של שם וכמות)
         Map<String, Double> stats = loadStats();//פונקציה ממומשת למטה
 
         // ב. בדיקה: האם שם המוצר כבר קיים בטבלה?
