@@ -6,7 +6,7 @@ import java.util.Map; // מבנה הנתונים של הסטטיסטיקות
 
 public class SimpleReportManager {
     // הנתיב שבו נשמור את הדוח הסופי (הקובץ שייפתח ב-Word)
-    private static final String REPORT_PATH = "src/data/store_report.txt";
+    private static final String REPORT_PATH = "src/data/store_report.doc";
 
     public static void createSalesReport() {
         //  נטען את הסטטיסטיקות שהכנו במחלקה הקודמת (SimpleStatsManager)
