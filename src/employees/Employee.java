@@ -15,11 +15,12 @@ public abstract  class Employee {
     protected String accountNumber;
     protected String storeID;
     protected String workerID;
+    protected boolean isBusy = false;
+    protected String currentChatId = null;
 
     public final String getUsername() {
         return username;
     }
-
     public final String getPassword() {
         return password;
     }
@@ -81,6 +82,17 @@ public abstract  class Employee {
         return this.workerID;
     }
 
+    public boolean isBusy() { return isBusy; }
+
+
+    public void setBusy(boolean busy) { isBusy = busy; }
+    public String getCurrentChatId() {
+        return currentChatId;
+    }
+
+    public void setCurrentChatId(String currentChatId) {
+        this.currentChatId = currentChatId;
+    }
 
     /**
      * @param password password of employee
@@ -123,6 +135,8 @@ public abstract  class Employee {
         data.workerID = this.getWorkerID();
         data.username = this.getUsername();
         data.password = this.getPassword();
+        data.isBusy = this.isBusy();//
+        data.currentChatWith = this.getCurrentChatId();//
         return data;
     }
 
@@ -138,13 +152,21 @@ public abstract  class Employee {
      * @param data EmployeeData used as an interface between JSON
      * @return Subclass of employee depends on the type in data
      */
+
     public static Employee fromData(EmployeeData data) {
-        return switch (data.type) {
+        // קודם יוצרים את העובד לפי הסוג (הקוד הקיים שלך)
+        Employee emp = switch (data.type) {
             case "RegisterEmployee" -> new RegisterEmployee(data.name, data.id, data.phoneNumber, data.accountNumber,data.storeID, data.workerID, data.username,data.password);
             case "Seller" -> new SellerEmployee(data.name, data.id, data.phoneNumber, data.accountNumber,data.storeID, data.workerID, data.username,data.password);
             case "ShiftManager" -> new ManagerEmployee(data.name, data.id, data.phoneNumber, data.accountNumber,data.storeID, data.workerID, data.username,data.password);
             default -> throw new IllegalArgumentException("Unknown role: " + data.type);
         };
+
+        // --- הוספנו את השורות האלו: מעדכנים את הסטטוס שלו ---
+        emp.setBusy(data.isBusy);
+        emp.setCurrentChatId(data.currentChatWith);
+
+        return emp;
     }
 
     @Override
