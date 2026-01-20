@@ -11,7 +11,7 @@ It is adding to the cart and calculate the discount to the customer.
  */
 
 public class Sell {
-    private double totalprice, priceBeforDiscount, discout;  //The discount set by the customer's type, we are getting the customer in the constructor
+    private double totalprice, priceBeforDiscount, discout;
     private LinkedList<CartItem> cart;
     private String customerName, phone, email;
     private Discount d;
@@ -28,6 +28,7 @@ public class Sell {
         System.out.print("Enter your email: ");
         this.email = s.nextLine();
         System.out.println();
+        this.customer = null;
     }
 
     //The constructor is getting a customer and calculating the discount amount via the customer type
@@ -141,4 +142,5 @@ public class Sell {
         System.out.println("Thanks you for shopping!");
     }
 }
+
 
