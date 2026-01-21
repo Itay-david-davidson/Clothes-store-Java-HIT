@@ -5,6 +5,7 @@ import Services.EmployeeService;
 import Services.CustomerService;
 import Services.SimpleLogManager;
 import Services.SimpleStatsManager;
+import Services.ProductService;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import customers.Customer;
@@ -105,6 +106,25 @@ public class RequestHandler {
                 break;
 
             }
+            case "purchaseProduct": {
+                // שולף שם מוצר מהגייסון
+                String productName = data.get("productName").getAsString();
+                String storeId = data.get("StoreID").getAsString();
+
+                // 2. עדכון המלאי הפיזי (דרך ה-ProductService הקיים שלך)
+                boolean reduced = ProductService.reduceItemsFromCategory(Integer.parseInt(storeId), productName, 1);
+
+                if (reduced) {
+                    // הוספת ערך ללוג סטטיסטיקה על מכירה
+                    SimpleStatsManager.updateProductSale(productName);
+
+                    // 4. רישום לוג של המכירה עם חותמת זמן
+                    SimpleLogManager.writeToLog("System", "SALE", "Sold: " + productName + " at Branch: " + storeId);
+                }
+                break;
+            }
+
+
         }
         return response;
     }
