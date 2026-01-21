@@ -13,8 +13,7 @@ public class SimpleClient {
              PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
              Scanner scanner = new Scanner(System.in)) {
-
-            System.out.println("Connected to server! Please paste your JSON login string:");
+            System.out.println("Connected to server!");
 
             // יצירת Thread נפרד שיקשיב להודעות מהשרת וידפיס אותן
             new Thread(() -> {

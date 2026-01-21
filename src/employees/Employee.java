@@ -101,7 +101,7 @@ public abstract  class Employee {
     //TODO: get password policy from JSON and check if true
     protected boolean validatePassword(String password)
     {
-        PasswordData policy =PasswordResponse.getPasswordPolicy();
+        PasswordData policy = PasswordResponse.getPasswordPolicy();
         if (password.length() < policy.minLength)
             return false;
         if (policy.requireDigit && !password.matches(".*\\d.*"))
@@ -110,9 +110,7 @@ public abstract  class Employee {
             return false;
         if (policy.requireUppercase && !password.matches(".*[A-Z]*"))
             return false;
-        if (policy.requireSpecial && !password.matches("[$&+,:;=\\\\\\\\?@#|/'<>.^*()%!-]"))
-            return false;
-        return true;
+        return !policy.requireSpecial || password.matches(".*[$&+,:;=\\\\\\\\?@#|/'<>.^*()%!-].*");
     }
 
     public final String getType()
@@ -154,10 +152,11 @@ public abstract  class Employee {
      */
 
     public static Employee fromData(EmployeeData data) {
+        System.out.println(data.type);
         // קודם יוצרים את העובד לפי הסוג (הקוד הקיים שלך)
         Employee emp = switch (data.type) {
             case "RegisterEmployee" -> new RegisterEmployee(data.name, data.id, data.phoneNumber, data.accountNumber,data.storeID, data.workerID, data.username,data.password);
-            case "Seller" -> new SellerEmployee(data.name, data.id, data.phoneNumber, data.accountNumber,data.storeID, data.workerID, data.username,data.password);
+            case "SellerEmployee" -> new SellerEmployee(data.name, data.id, data.phoneNumber, data.accountNumber,data.storeID, data.workerID, data.username,data.password);
             case "ShiftManager" -> new ManagerEmployee(data.name, data.id, data.phoneNumber, data.accountNumber,data.storeID, data.workerID, data.username,data.password);
             default -> throw new IllegalArgumentException("Unknown role: " + data.type);
         };

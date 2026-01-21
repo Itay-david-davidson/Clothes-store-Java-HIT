@@ -21,6 +21,10 @@ public class EmployeeService {
             return false;
         }
         List<Employee> data = EmployeeRepository.load();
+        if (findEmployee(data, employee.getID()) != null) {
+            System.out.println("Error: Cannot add employee as there is already an employee with the same ID! " + employee.getID());
+            return false;
+        }
         data.add(employee);
         EmployeeRepository.save(data);
         System.out.println("Info: Successfully added " + employee + ".");
@@ -56,7 +60,7 @@ public class EmployeeService {
     public static boolean removeEmployee(String id) {
         Employee e = findEmployee(id);
         if (e == null) {
-            System.out.println("Error: Cannot find employee with id of " + id + "!");
+            System.out.println("Error: Cannot remove employee with given ID " + id + " as it does not exist in repository!");
             return false;
         }
         List<Employee> data = EmployeeRepository.load();

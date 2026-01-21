@@ -21,6 +21,10 @@ public class CustomerService {
             return false;
         }
         List<Customer> data = CustomerRepository.load();
+        if (findCustomer(data, customer.getID()) != null) {
+            System.out.println("Error: Cannot add customer as there is already a customer with the same ID! " + customer.getID());
+            return false;
+        }
         data.add(customer);
         CustomerRepository.save(data);
         System.out.println("Info: Successfully added " + customer + ".");

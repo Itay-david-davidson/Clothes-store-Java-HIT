@@ -4,14 +4,8 @@ import Chat.ChatActions;
 import Services.EmployeeService;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import customers.Customer;
-import customers.NewCustomer;
-import customers.ReturningCustomer;
-import customers.VIPCustomer;
-import employees.Employee;
-import employees.ManagerEmployee;
-import employees.RegisterEmployee;
-import employees.SellerEmployee;
+import customers.*;
+import employees.*;
 
 public class RequestHandler {
     private static final Gson gson = new Gson();
@@ -43,7 +37,7 @@ public class RequestHandler {
                 String username = data.get("username").getAsString();
                 String branchId = data.get("StoreId").getAsString();
                 //TODO: add chat intergration
-                chat = Chat.startChat(userIdRequesting, branchId); // Connect the chat here.
+                //chat = Chat.startChat(userIdRequesting, branchId); // Connect the chat here.
                 break;
             }
             case "addManagerEmployee":

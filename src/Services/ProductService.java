@@ -28,7 +28,7 @@ public class ProductService {
 
     public static boolean addProduct(String id, String name, String category, int branchId, double price, int quantity) {
         List<Product> data = ProductRepository.load();
-        if (findProduct(branchId, id) != null) {
+        if (findProduct(data, branchId, id) != null) {
             System.out.println("Error: Product by " + id + " already exists in inventory!");
             return false;
         }
@@ -45,6 +45,10 @@ public class ProductService {
             return false;
         }
         List<Product> data = ProductRepository.load();
+        if (findProduct(data, product.getBranchId(), product.getId()) != null) {
+            System.out.println("Error: Product by " + product.getId() + " already exists in inventory!");
+            return false;
+        }
         data.add(product);
         ProductRepository.save(data);
         System.out.println("Info: Successfully added " + product + " to inventory.");
