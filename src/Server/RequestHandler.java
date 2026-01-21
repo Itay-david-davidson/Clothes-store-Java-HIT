@@ -17,12 +17,12 @@ public class RequestHandler {
     private static final Gson gson = new Gson();
     private static Employee employee;
     private static Customer customer;
-    private static ChatActions chat;
-    public static String Handle(JsonObject request) // return String but has inside objects
+    private static ClientHandler client;
+    public static String Handle(JsonObject request)
     {
         Employee employee;
         String action = request.get("action").getAsString();
-        JsonObject data = request.getAsJsonObject("Employees"); //
+        JsonObject data = request.getAsJsonObject("Employees"); 
         String response =  "";
 
         switch(action) {
@@ -41,9 +41,8 @@ public class RequestHandler {
             }
             case "startChat": {
                 String username = data.get("username").getAsString();
-                String branchId = data.get("StoreId").getAsString();
-                //TODO: add chat intergration
-                chat = Chat.startChat(userIdRequesting, branchId); // Connect the chat here.
+                
+                client = server.findClientById(username);
                 break;
             }
             case "addManagerEmployee":
@@ -83,7 +82,6 @@ public class RequestHandler {
                     customer = new VIPCustomer(name, id, phoneNumber);
                 }
             }
-
         }
         return response;
     }
