@@ -82,6 +82,7 @@ public abstract  class Employee {
         return this.workerID;
     }
 
+
     public boolean isBusy() { return isBusy; }
 
 
@@ -110,8 +111,6 @@ public abstract  class Employee {
             return false;
         if (policy.requireUppercase && !password.matches(".*[A-Z]*"))
             return false;
-        if (policy.requireSpecial && !password.matches("[$&+,:;=\\\\\\\\?@#|/'<>.^*()%!-]"))
-            return false;
         return true;
     }
 
@@ -135,8 +134,8 @@ public abstract  class Employee {
         data.workerID = this.getWorkerID();
         data.username = this.getUsername();
         data.password = this.getPassword();
-        data.isBusy = this.isBusy();//
-        data.currentChatWith = this.getCurrentChatId();//
+        //data.isBusy = this.isBusy();//
+        //data.currentChatWith = this.getCurrentChatId();//
         return data;
     }
 
@@ -157,14 +156,14 @@ public abstract  class Employee {
         // קודם יוצרים את העובד לפי הסוג (הקוד הקיים שלך)
         Employee emp = switch (data.type) {
             case "RegisterEmployee" -> new RegisterEmployee(data.name, data.id, data.phoneNumber, data.accountNumber,data.storeID, data.workerID, data.username,data.password);
-            case "Seller" -> new SellerEmployee(data.name, data.id, data.phoneNumber, data.accountNumber,data.storeID, data.workerID, data.username,data.password);
-            case "ShiftManager" -> new ManagerEmployee(data.name, data.id, data.phoneNumber, data.accountNumber,data.storeID, data.workerID, data.username,data.password);
+            case "SellerEmployee" -> new SellerEmployee(data.name, data.id, data.phoneNumber, data.accountNumber,data.storeID, data.workerID, data.username,data.password);
+            case "ManagerEmployee" -> new ManagerEmployee(data.name, data.id, data.phoneNumber, data.accountNumber,data.storeID, data.workerID, data.username,data.password);
             default -> throw new IllegalArgumentException("Unknown role: " + data.type);
         };
 
         // --- הוספנו את השורות האלו: מעדכנים את הסטטוס שלו ---
-        emp.setBusy(data.isBusy);
-        emp.setCurrentChatId(data.currentChatWith);
+        //emp.setBusy(data.isBusy);
+        //emp.setCurrentChatId(data.currentChatWith);
 
         return emp;
     }

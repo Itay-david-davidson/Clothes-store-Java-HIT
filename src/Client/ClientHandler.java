@@ -26,7 +26,7 @@ public class ClientHandler implements Runnable {
         try {
             String message;
             while ((message = in.readLine()) != null) {
-                server.broadcast(message, this);
+                //server.broadcast(message, this);
             }
         } catch (IOException e) {
             System.out.println("Client disconnected");

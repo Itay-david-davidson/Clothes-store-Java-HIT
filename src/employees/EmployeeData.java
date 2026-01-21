@@ -13,6 +13,6 @@ public class EmployeeData implements Serializable {
     public String username;
     public String password;
     public String type;
-    public boolean isBusy;
-    public String currentChatWith;
+    //public boolean isBusy;
+    //public String currentChatWith;
 }

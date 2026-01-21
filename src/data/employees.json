@@ -7,7 +7,7 @@
     "storeID" : "1",
     "workerID": "1",
     "username": "YosiCCC123",
-    "password": "abcdeZfgh1@",
+    "password": "Admin123@!",
     "type": "SellerEmployee"
   },
   {
@@ -18,7 +18,7 @@
     "storeID": "2",
     "workerID": "2",
     "username": "RLEV4444",
-    "password": "abcCde%$123",
+    "password": "Aadmin123$",
     "type": "RegisterEmployee"
   },
   {
@@ -29,7 +29,7 @@
     "storeID": "1",
     "workerID": "3",
     "username": "IsrMoshe321",
-    "password": "aSbcde%$12367",
+    "password": "Admin123@",
     "type": "ManagerEmployee"
   },
   {
@@ -40,7 +40,7 @@
     "storeID" : "2",
     "workerID": "4",
     "username": "ChoenPriest123",
-    "password": "a9879!@#sadD",
+    "password": "Admin123#",
     "type": "SellerEmployee"
   },
   {
@@ -51,7 +51,7 @@
     "storeID" : "1",
     "workerID": "5",
     "username": "host",
-    "password": "admin123!",
+    "password": "Admin123!",
     "type": "RegisterEmployee"
   }
 ]
