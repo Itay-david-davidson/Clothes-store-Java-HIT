@@ -9,7 +9,7 @@ public class Server {
     public static final int PORT = 5001;
 
     // רשימת הלקוחות
-    private ArrayList<ClientHandler> allClients = new ArrayList<>();
+    private static ArrayList<ClientHandler> allClients = new ArrayList<>();
 
     public static void main(String[] args) {
         new Server().runServer();
@@ -40,7 +40,7 @@ public class Server {
     }
 
     // מוצא לקוח לפי ID (כדי לחבר שיחות)
-    public synchronized ClientHandler findClientById(String id) {
+    public synchronized static ClientHandler findClientById(String id) {
         for (ClientHandler client : allClients) {
             if (client.getEmployee() != null && client.getEmployee().getID().equals(id)) {
                 return client;
