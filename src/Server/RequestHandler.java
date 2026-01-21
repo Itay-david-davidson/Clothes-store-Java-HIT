@@ -5,6 +5,7 @@ import Services.EmployeeService;
 import Services.CustomerService;
 import Services.SimpleLogManager;
 import Services.SimpleStatsManager;
+import Services.SimpleReportManager;
 import Services.ProductService;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -123,6 +124,19 @@ public class RequestHandler {
                 }
                 break;
             }
+            case "createReport": {
+                // 1. קריאה למנהל הדוח שיצרנו עכשיו
+                SimpleReportManager.createSalesReport();
+
+                // 2. רישום בלוג שהעובד הפיק דוח (כדי שיהיה תיעוד במשימת הלוגים שלך)
+                SimpleLogManager.writeToLog("System", "REPORT_GENERATED", "Admin generated a sales report");
+
+                // 3. החזרת תשובה חיובית לקליינט
+                response = "{\"status\": \"success\", \"message\": \"Report generated successfully as .doc file\"}";
+                break;
+            }
+
+
 
 
         }
