@@ -2,6 +2,9 @@ package Server;
 
 import Chat.ChatActions;
 import Services.EmployeeService;
+import Services.CustomerService;
+import Services.SimpleLogManager;
+import Services.SimpleStatsManager;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import customers.Customer;
@@ -13,16 +16,17 @@ import employees.ManagerEmployee;
 import employees.RegisterEmployee;
 import employees.SellerEmployee;
 
+
 public class RequestHandler {
     private static final Gson gson = new Gson();
     private static Employee employee;
     private static Customer customer;
-    private static ChatActions chat;
-    public static String Handle(JsonObject request) // return String but has inside objects
+    private static ClientHandler client;
+    public static String Handle(JsonObject request)
     {
         Employee employee;
         String action = request.get("action").getAsString();
-        JsonObject data = request.getAsJsonObject("Employees"); //
+        JsonObject data = request.getAsJsonObject("Employees"); 
         String response =  "";
 
         switch(action) {
@@ -41,9 +45,8 @@ public class RequestHandler {
             }
             case "startChat": {
                 String username = data.get("username").getAsString();
-                String branchId = data.get("StoreId").getAsString();
-                //TODO: add chat intergration
-                chat = Chat.startChat(userIdRequesting, branchId); // Connect the chat here.
+                
+                client = server.findClientById(username);
                 break;
             }
             case "addManagerEmployee":
@@ -60,10 +63,19 @@ public class RequestHandler {
 
                 if (action.equals("addManagerEmployee")) {
                     employee = new ManagerEmployee(name, id, phoneNumber, accountNumber, storeId, workerID, username, password);
-                } else if (action.equals("addRegisterEmployee")) {
+                }
+                else if (action.equals("addRegisterEmployee")) {
                     employee = new RegisterEmployee(name, id, phoneNumber, accountNumber, storeId, workerID, username, password);
-                } else {
+                }
+                else {
                     employee = new SellerEmployee(name, id, phoneNumber, accountNumber, storeId, workerID, username, password);
+                }
+                // אורי כוכבי בדיקה שמירה ותיעוד למנהל הלוגים
+                boolean success = EmployeeService.addEmployee(employee); // שמירה ל employees.jason הקיים
+                if (success) {
+                    // קריאה למנהל הלוגים:
+                    SimpleLogManager.writeToLog("System", "ADD_EMPLOYEE",
+                            "New worker: " + employee.getName() + " (ID: " + employee.getID() + ")");
                 }
                 break;
             }
@@ -82,8 +94,16 @@ public class RequestHandler {
                 } else {
                     customer = new VIPCustomer(name, id, phoneNumber);
                 }
-            }
+                // שמירת לקוח חדש לcustomers.json  הקיים
+                boolean success = CustomerService.addCustomer(customer);
+                // אם נוצר לקוח חדש, מפעיל את מנהל הלוגים וכותב שורה (LOG)
+                if (success) {
+                    SimpleLogManager.writeToLog("System", "ADD_CUSTOMER",
+                            "Customer: " + customer.getName() + " type: " + action);
+                }
+                break;
 
+            }
         }
         return response;
     }
