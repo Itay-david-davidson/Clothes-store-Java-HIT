@@ -4,11 +4,12 @@
     "name": "Yosi Cohen",
     "phoneNumber": "0501111111",
     "accountNumber": "05451767",
-    "storeID" : "1",
+    "storeID": "1",
     "workerID": "1",
     "username": "YosiCCC123",
     "password": "abcdeZfgh1@",
-    "type": "SellerEmployee"
+    "type": "",
+    "isBusy": false
   },
   {
     "id": "E102",
@@ -19,7 +20,8 @@
     "workerID": "2",
     "username": "RLEV4444",
     "password": "abcCde%$123",
-    "type": "RegisterEmployee"
+    "type": "",
+    "isBusy": false
   },
   {
     "id": "E103",
@@ -30,28 +32,41 @@
     "workerID": "3",
     "username": "IsrMoshe321",
     "password": "aSbcde%$12367",
-    "type": "ShiftManager"
+    "type": "",
+    "isBusy": false
   },
   {
     "id": "E001",
     "name": "Yosi Cohen",
     "phoneNumber": "05011112311",
     "accountNumber": "6346873",
-    "storeID" : "2",
+    "storeID": "2",
     "workerID": "4",
     "username": "ChoenPriest123",
     "password": "a9879!@#sadD",
-    "type": "SellerEmployee"
+    "type": "",
+    "isBusy": false
   },
   {
     "id": "E000",
     "name": "Me",
     "phoneNumber": "0501145611",
     "accountNumber": "2",
-    "storeID" : "1",
+    "storeID": "1",
     "workerID": "5",
     "username": "host",
-    "password": "admin123!",
-    "type": "RegisterEmployee"
+    "type": "",
+    "isBusy": false
+  },
+  {
+    "id": "E999",
+    "name": "Big Boss",
+    "phoneNumber": "05099999",
+    "accountNumber": "12345",
+    "storeID": "1",
+    "workerID": "99",
+    "username": "boss1",
+    "type": "",
+    "isBusy": false
   }
 ]

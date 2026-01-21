@@ -1,4 +1,4 @@
-package Server;
+package server; // או Client, תלוי איפה שמרת אותו
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -13,15 +13,21 @@ public class SimpleClient {
              PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
              Scanner scanner = new Scanner(System.in)) {
-            System.out.println("Connected to server!");
+
+            // שינוי 1: ניסוח מדויק יותר - מחוברים לרשת, אבל צריך להתחבר למערכת
+            System.out.println("--- Network Connected ---");
+            System.out.println("Please enter LOGIN command to access the system.");
 
             // יצירת Thread נפרד שיקשיב להודעות מהשרת וידפיס אותן
             new Thread(() -> {
                 try {
                     String serverMsg;
                     while ((serverMsg = in.readLine()) != null) {
+                        // הדפסה נקייה של הודעת השרת בלי תוספות מיותרות
                         System.out.println("\n[SERVER]: " + serverMsg);
-                        System.out.print("Your message: "); // סתם כדי שיהיה נוח בעין
+
+                        // שינוי 2: מחקתי מפה את השורה: System.out.print("Your message: ");
+                        // זה מה שעשה לך את הבלגן במסך. עכשיו זה נקי.
                     }
                 } catch (Exception e) {
                     System.out.println("Server disconnected.");
@@ -36,7 +42,7 @@ public class SimpleClient {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Could not connect to server (Is it running?).");
         }
     }
 }
