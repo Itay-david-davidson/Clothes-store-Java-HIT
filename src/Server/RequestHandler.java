@@ -46,12 +46,13 @@ public class RequestHandler {
             case "startChat": {
                 String username = data.get("username").getAsString();
                 
-                client = server.findClientById(username);
+                client = Server.findClientById(username);
                 break;
             }
             case "addManagerEmployee":
             case "addRegisterEmployee":
             case "addSellerEmployee": {
+                Employee newEmployee;
                 String name = data.get("name").getAsString();
                 String id = data.get("id").getAsString();
                 String phoneNumber = data.get("phoneNumber").getAsString();
@@ -62,20 +63,20 @@ public class RequestHandler {
                 String password = data.get("password").getAsString();
 
                 if (action.equals("addManagerEmployee")) {
-                    employee = new ManagerEmployee(name, id, phoneNumber, accountNumber, storeId, workerID, username, password);
+                     newEmployee = new ManagerEmployee(name, id, phoneNumber, accountNumber, storeId, workerID, username, password);
                 }
                 else if (action.equals("addRegisterEmployee")) {
-                    employee = new RegisterEmployee(name, id, phoneNumber, accountNumber, storeId, workerID, username, password);
+                     newEmployee = new RegisterEmployee(name, id, phoneNumber, accountNumber, storeId, workerID, username, password);
                 }
                 else {
-                    employee = new SellerEmployee(name, id, phoneNumber, accountNumber, storeId, workerID, username, password);
+                     newEmployee = new SellerEmployee(name, id, phoneNumber, accountNumber, storeId, workerID, username, password);
                 }
                 // אורי כוכבי בדיקה שמירה ותיעוד למנהל הלוגים
-                boolean success = EmployeeService.addEmployee(employee); // שמירה ל employees.jason הקיים
+                boolean success = EmployeeService.addEmployee(newEmployee); // שמירה ל employees.jason הקיים
                 if (success) {
                     // קריאה למנהל הלוגים:
                     SimpleLogManager.writeToLog("System", "ADD_EMPLOYEE",
-                            "New worker: " + employee.getName() + " (ID: " + employee.getID() + ")");
+                            "New worker: " + newEmployee.getName() + " (ID: " + newEmployee.getID() + ")");
                 }
                 break;
             }
