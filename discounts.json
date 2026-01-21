@@ -1,0 +1,27 @@
+{
+  "customerDiscounts": {
+    "NewCustomer": { "kind": "PERCENT_CART", "enabled": true, "percentage": 0.05 },
+    "ReturningCustomer": { "kind": "PERCENT_CART", "enabled": true, "percentage": 0.15 },
+    "VIPCustomer": { "kind": "PERCENT_CART", "enabled": true, "percentage": 0.30 }
+  },
+  "promotions": [
+    {
+      "ID": "D001",
+      "name": "1+1 promotion",
+      "enabled": true,
+      "params": { "buyNtM": 2, "payQty": 1, "products": [] }
+    },
+    {
+      "ID": "D002",
+      "name": "Second item 50%",
+      "enabled": true,
+      "params": { "percentOff": 0.5, "products": [] }
+    },
+    {
+      "ID": "D003",
+      "name": "Buy 4 pay for 2",
+      "enabled": true,
+      "params": { "buyNtM": 4, "payQty": 2, "products": [] }
+    }
+  ]
+}
