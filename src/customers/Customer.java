@@ -59,9 +59,9 @@ public abstract class Customer {
      */
         public static Customer fromData(CustomerData data) {
             return switch (data.type) {
-                case "VIP" -> new VIPCustomer(data.id, data.name, data.phone);
-                case "RETURNING" -> new ReturningCustomer(data.id, data.name, data.phone);
-                case "NEW" -> new NewCustomer(data.id, data.name, data.phone);
+                case "VIP" -> new VIPCustomer(data.name, data.id, data.phone);
+                case "RETURNING" -> new ReturningCustomer(data.name, data.id, data.phone);
+                case "NEW" -> new NewCustomer(data.name, data.id, data.phone);
                 default -> throw new IllegalArgumentException("Unknown customer type: " + data.type);
             };
         }
